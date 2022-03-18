@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace UnityAnalyzers.Core
+namespace Needle.Analyzers
 { 
 	public class DllImportProcessor : AssetPostprocessor
 	{
