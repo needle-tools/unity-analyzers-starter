@@ -16,3 +16,4 @@ Unity Analyzer test/dev package.
 
 ## Other Resources
 - https://github.com/microsoft/Microsoft.Unity.Analyzers
+- https://github.com/Cybermaxs/awesome-analyzers
