@@ -9,6 +9,7 @@ using SyntaxKind = Microsoft.CodeAnalysis.CSharp.SyntaxKind;
 
 namespace UnityAnalyzers
 {
+    // https://stackoverflow.com/questions/45508556/making-extension-methods-from-a-third-party-library-obsolete/45513467#45513467
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ForbiddenMethodsAnalyzer : DiagnosticAnalyzer
     {
@@ -30,11 +31,11 @@ namespace UnityAnalyzers
         {
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var memberAccessExpression = invocationExpression.Expression as MemberAccessExpressionSyntax;
-            if (memberAccessExpression?.Name.ToString() == "EndsWith")
+            if (memberAccessExpression != null)//memberAccessExpression?.Name.ToString() == "EndsWith")
             {
                 var memberSymbol = context.SemanticModel.GetSymbolInfo(memberAccessExpression).Symbol as IMethodSymbol;
                 var containingType = memberSymbol.ContainingType;
-                if (containingType.ContainingNamespace.Name == "System" && containingType.Name == "String")
+                // if (containingType.ContainingNamespace.Name == "System" && containingType.Name == "String")
                 {
                     var diagnostic = Diagnostic.Create(Rule, invocationExpression.GetLocation(), memberAccessExpression.ToString());
                     context.ReportDiagnostic(diagnostic);
