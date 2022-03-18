@@ -12,8 +12,8 @@ namespace UnityAnalyzers
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class PhysicsCallsAnalyzer : DiagnosticAnalyzer
     {
-        private static readonly DiagnosticDescriptor Rule = new("Forbidden",
-            "Don't use this method!",
+        private static readonly DiagnosticDescriptor Rule = new("InvalidRaycastUsage",
+            "Calling Physics.Raycast is not allowed",
             "Use of the '{0}' method is not allowed",
             "Forbidden.Stuff",
             DiagnosticSeverity.Error,
