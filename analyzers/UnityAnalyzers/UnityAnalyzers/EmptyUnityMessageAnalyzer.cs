@@ -12,7 +12,7 @@ namespace UnityAnalyzers.Core
 		internal static readonly DiagnosticDescriptor Rule = new(
 			id: "UNT0001",
 			title: "title",
-			messageFormat: "This is the message",
+			messageFormat: "This is the message123",
 			category: "Performance",
 			defaultSeverity: DiagnosticSeverity.Info,
 			isEnabledByDefault: true,

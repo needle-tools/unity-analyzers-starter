@@ -9,18 +9,18 @@ using SyntaxKind = Microsoft.CodeAnalysis.CSharp.SyntaxKind;
 
 namespace UnityAnalyzers
 {
-    // https://stackoverflow.com/questions/45508556/making-extension-methods-from-a-third-party-library-obsolete/45513467#45513467
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class ForbiddenMethodsAnalyzer : DiagnosticAnalyzer
+    public class PhysicsCallsAnalyzer : DiagnosticAnalyzer
     {
-        private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor("Forbidden",
+        private static readonly DiagnosticDescriptor Rule = new("Forbidden",
             "Don't use this method!",
             "Use of the '{0}' method is not allowed",
             "Forbidden.Stuff",
-            DiagnosticSeverity.Warning,
+            DiagnosticSeverity.Error,
             isEnabledByDefault: true,
             description: "This method is forbidden.");
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
+        
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
         public override void Initialize(AnalysisContext context)
         {
@@ -29,15 +29,18 @@ namespace UnityAnalyzers
 
         private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
         {
+            if (context.Compilation.AssemblyName.Contains("Unity")) return;
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var memberAccessExpression = invocationExpression.Expression as MemberAccessExpressionSyntax;
-            if (memberAccessExpression?.Name.ToString() == "EndsWith")
+            if (memberAccessExpression?.Name.ToString() == "Raycast")
             {
                 var memberSymbol = context.SemanticModel.GetSymbolInfo(memberAccessExpression).Symbol as IMethodSymbol;
+                
                 var containingType = memberSymbol?.ContainingType;
-                if (containingType?.ContainingNamespace.Name == "System" && containingType.Name == "String")
+                if (containingType?.ContainingNamespace.Name == "UnityEngine" && containingType.Name == "Physics")
                 {
-                    var diagnostic = Diagnostic.Create(Rule, invocationExpression.GetLocation(), memberAccessExpression.ToString());
+                    var diagnostic = Diagnostic.Create(Rule, invocationExpression.GetLocation(), 
+                        memberAccessExpression.ToString());
                     context.ReportDiagnostic(diagnostic);
                 }
             }
