@@ -18,6 +18,7 @@ using SyntaxKind = Microsoft.CodeAnalysis.CSharp.SyntaxKind;
 namespace UnityAnalyzers
 {
 	[DiagnosticAnalyzer(LanguageNames.CSharp)]
+	// ReSharper disable once ClassNeverInstantiated.Global
 	public class PhysicsCallsAnalyzer : DiagnosticAnalyzer
 	{
 		internal static readonly DiagnosticDescriptor Rule = new(
