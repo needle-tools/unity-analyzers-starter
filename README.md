@@ -1,6 +1,8 @@
 
 Unity Analyzer test/dev package.
 
+The included solution is setup to copy the dll to the package on build time
+
 ## Introduction
 - Analyzers are dlls in Unity
 - They apply globally if they are outside of an asmdef (can be inside a package) or locally when inside a package
@@ -13,6 +15,7 @@ Unity Analyzer test/dev package.
 
 ## Unity Documentation
 - https://docs.unity3d.com/2021.2/Documentation/Manual/roslyn-analyzers.html 
+- NOTE: to add an AssetLabel the dll must be copied to the Assets folder to show the UI (and can then go to the package)
 
 ## Other Resources
 - https://github.com/microsoft/Microsoft.Unity.Analyzers
