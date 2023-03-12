@@ -33,6 +33,7 @@ The included solution is setup to copy the dll to the package on build time
     PluginImporter:
       ...
   ```
+- [Debugging SourceGenerators](https://github.com/needle-mirror/com.unity.entities/blob/2b7ad3ab445aff771ddffa3dd9d330f21fb1dd70/Unity.Entities/SourceGenerators/Source~/README.md?plain=1#L25)
 
 ## Other Resources
 - https://github.com/microsoft/Microsoft.Unity.Analyzers
