@@ -24,7 +24,15 @@ The included solution is setup to copy the dll to the package on build time
 
 ## Unity Documentation
 - https://docs.unity3d.com/2021.2/Documentation/Manual/roslyn-analyzers.html 
-- NOTE: to add the necessary AssetLabel ``RoslynAnalyzer`` the dll must be copied to the Assets folder to show the UI (and can then go to the package)
+- NOTE: to add the necessary AssetLabel ``RoslynAnalyzer`` the dll must be copied to the Assets folder to show the UI (and can then go to the package)  
+  Alternativelly you can edit the dll meta manually to add the label:
+  ```meta
+    guid: ...
+    labels:
+    - RoslynAnalyzer
+    PluginImporter:
+      ...
+  ```
 
 ## Other Resources
 - https://github.com/microsoft/Microsoft.Unity.Analyzers
