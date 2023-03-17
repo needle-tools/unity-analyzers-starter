@@ -24,7 +24,8 @@ The included solution is setup to copy the dll to the package on build time
 
 ## Unity Documentation
 - https://docs.unity3d.com/2021.2/Documentation/Manual/roslyn-analyzers.html 
-- NOTE: to add the necessary AssetLabel ``RoslynAnalyzer`` the dll must be copied to the Assets folder to show the UI (and can then go to the package)  
+- **NOTE**: to add the necessary AssetLabel ``RoslynAnalyzer`` the dll must be copied to the Assets folder to show the UI (and can then go to the package)   
+  There are also [two more labels mentiond](https://github.com/needle-mirror/com.unity.entities/blob/2b7ad3ab445aff771ddffa3dd9d330f21fb1dd70/Unity.Entities/SourceGenerators/Source~/README.md?plain=1#L59) `SourceGenerator` and `RunOnlyOnAssembliesWithReference`  
   Alternativelly you can edit the dll meta manually to add the label:
   ```meta
     guid: ...
@@ -32,9 +33,8 @@ The included solution is setup to copy the dll to the package on build time
     - RoslynAnalyzer
     PluginImporter:
       ...
-  There are also [two more labels mentiond](https://github.com/needle-mirror/com.unity.entities/blob/2b7ad3ab445aff771ddffa3dd9d330f21fb1dd70/Unity.Entities/SourceGenerators/Source~/README.md?plain=1#L59) `SourceGenerator` and `RunOnlyOnAssembliesWithReference`    
    
-  ```
+  ```  
 - [Debugging SourceGenerators](https://github.com/needle-mirror/com.unity.entities/blob/2b7ad3ab445aff771ddffa3dd9d330f21fb1dd70/Unity.Entities/SourceGenerators/Source~/README.md?plain=1#L25)
 
 ## Other Resources
