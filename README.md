@@ -39,6 +39,7 @@ The included solution is setup to copy the dll to the package on build time
 
 ## Debugging
 
+
 ```csharp
 #if DEBUG
             if (!Debugger.IsAttached)
@@ -47,6 +48,10 @@ The included solution is setup to copy the dll to the package on build time
             }
 #endif 
 ```
+
+When using Rider set Rider as the default JIT debugger in Settings/Debugger and clicking the `Set As Default Debugger` button
+![image](https://user-images.githubusercontent.com/5083203/226258311-a702ab99-255a-48a8-9467-a0e5266ee0a3.png)
+
 
 ## Other Resources
 - https://github.com/microsoft/Microsoft.Unity.Analyzers
